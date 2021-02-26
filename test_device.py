@@ -1,6 +1,29 @@
 import os
 import json
 from pathlib import Path
+import threading
+import time
+
+
+class DeviceManagerThread (threading.Thread):
+    def __init__(self, devices_directory, frequency):
+        threading.Thread.__init__(self)
+        self.devices_directory = devices_directory
+        self.frequency = frequency
+
+    def run(self):
+        while True:
+            get_statuses(self.devices_directory)
+            time.sleep(self.frequency)
+
+
+def start(devices_directory, frequency):
+    thread = DeviceManagerThread(devices_directory, frequency)
+    thread.start()
+
+
+def stop():
+    stop_threads = True
 
 
 def get_statuses(devices_directory):
