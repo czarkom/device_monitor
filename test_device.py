@@ -4,6 +4,7 @@ from pathlib import Path
 import threading
 import time
 
+exitFlag = 0
 
 class DeviceManagerThread (threading.Thread):
     def __init__(self, devices_directory, frequency):
@@ -12,7 +13,7 @@ class DeviceManagerThread (threading.Thread):
         self.frequency = frequency
 
     def run(self):
-        while True:
+        while exitFlag == 0:
             get_statuses(self.devices_directory)
             time.sleep(self.frequency)
 
@@ -23,7 +24,8 @@ def start(devices_directory, frequency):
 
 
 def stop():
-    stop_threads = True
+    global exitFlag
+    exitFlag = 1
 
 
 def get_statuses(devices_directory):
