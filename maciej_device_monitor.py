@@ -3,8 +3,8 @@ Devices monitor package written in Python. Before first use, please create direc
 Put one device per one file and make sure it's properly JSON formatted and it's .json file extension.
 Example config (you can put more device features if there's need to):
 {
-  'voltage': 666,
-  'current': 4
+  "voltage": 666,
+  "current": 4
 }
 Results are written to stderr and log file.
 Copyright (C) 2021 Maciej Czarkowski. All Rights Reserved.
@@ -56,7 +56,7 @@ def start(devices_directory, frequency):
     global exitFlag
     exitFlag = False
     thread = DeviceManagerThread(devices_directory, frequency)
-    thread.name = "Device manager thread"
+    thread.name = "Device_monitor_thread"
     thread.start()
 
 
@@ -87,7 +87,8 @@ def get_statuses(devices_directory):
                 except json.decoder.JSONDecodeError:
                     logging.error(f"Cannot parse {filename}. Check your syntax.")
                 except:
-                    logging.error(f"An error occured while parsing {filename}")
+                    logging.error(f"An error occurred while parsing {filename}")
         else:
             logging.error(f"Unsupported file extension for {filename}. Ensure to create .json file for the device.")
     logging.info(data_dict)
+    return data_dict

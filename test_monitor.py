@@ -1,5 +1,5 @@
 import time
-import maciej_device_manager as td
+import maciej_device_monitor as td
 import threading
 
 td.get_statuses('devices')
