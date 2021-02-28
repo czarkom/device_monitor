@@ -20,6 +20,7 @@ class TestStartingAndStoppingMonitor(unittest.TestCase):
         stop()
         self.assertFalse(any(thread.name == 'Device_monitor_thread' for thread in threading.enumerate()))
         self.assertEqual(before, threading.active_count())
+        shutil.rmtree('test_devices')
 
 
 if __name__ == '__main__':
