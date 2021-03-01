@@ -1,4 +1,4 @@
-# device_manager
+# Device monitor
 Project for home assignment - monitor all of your devices!
 Available methods:
 `start('devices_directory','log_frequency')`
