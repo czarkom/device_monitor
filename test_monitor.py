@@ -8,13 +8,13 @@ I'm logging data to stderr and maciej_device_logs.log file to make it easier to 
 
 import time
 import threading
-import maciej_device_monitor as td
+import maciej_device_monitor as mdm
 
 # At first, let's try to get all of the statuses using get_statuses method
-print(td.get_statuses('devices'))
+print(mdm.get_statuses('devices'))
 
 # Here I pass my directory with devices name and frequency of logging info about devices
-td.start('devices', 1)
+mdm.start('devices', 1)
 
 # Here we are sleeping for a few seconds just to have a look how nicely our monitor is logging data about devices.
 # It's possible to edit devices data on the fly, just save file and you can see fresh info logged.
@@ -29,7 +29,7 @@ for thread in threading.enumerate():
 time.sleep(5)
 
 # We're done, so we can stop our device monitor
-td.stop()
+mdm.stop()
 
 time.sleep(2)
 
