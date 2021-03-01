@@ -2,7 +2,7 @@ Metadata-Version: 2.1
 Name: maciejdevicemonitor
 Version: 0.9.1
 Summary: Device monitor package for AP Tech
-Home-page: https://github.com/javatechy/dokr
+Home-page: https://github.com/czarkom/device_monitor
 Author: Maciej Czarkowski
 Author-email: mczarkowski98@gmail.com
 License: UNKNOWN
