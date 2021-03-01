@@ -9,7 +9,7 @@ from maciej_device_monitor import start, stop
 class TestStartingAndStoppingMonitor(unittest.TestCase):
     def test_start_and_stop(self):
         os.mkdir("test_devices")
-        with open('test_devices/fridge.json', 'w') as device1:
+        with open('test_devices/lamp.json', 'w') as device1:
             data = {'voltage': 230, 'current': 10}
             json.dump(data, device1)
         before = threading.active_count()

@@ -16,14 +16,17 @@ td.get_statuses('devices')
 # Here I pass my directory with devices name and frequency of logging info about devices
 td.start('devices', 1)
 
-# We can have a look at our fresh thread and its name
-print("Threads:")
+# Here we are sleeping for a few seconds just to have a look how nicely our monitor is logging data about devices.
+# It's possible to edit devices data on the fly, just save file and you can see fresh info logged.
+time.sleep(20)
+
+# Meanwhile, we can have a look at our threads and their names (Device_monitor_thread is also there)
+print("Threads while Device Monitor is on:")
 for thread in threading.enumerate():
     print(thread.name)
 
-# Here we are sleeping for a few seconds just to have a look how nicely our monitor is logging data about devices.
-# It's possible to edit devices data on the fly, just save file and you can see fresh info logged.
-time.sleep(10)
+# Some more time to have a look at our devices current state
+time.sleep(5)
 
 # We're done, so we can stop our device monitor
 td.stop()
@@ -31,9 +34,9 @@ td.stop()
 time.sleep(2)
 
 # Let's print out our thread and see that our device monitor is gone - just as it should
-print("Threads:")
+print("Threads after exiting Device Monitor:")
 for thread in threading.enumerate():
     print(thread.name)
 
 # Bye, bye:)
-print("Exiting Main Thread")
+print("Exiting main thread, script finished")

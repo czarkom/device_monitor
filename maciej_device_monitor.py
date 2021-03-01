@@ -72,6 +72,7 @@ def stop():
 def get_statuses(devices_directory):
     """
         Get current devices statuses. Pass 'devices_directory' path to specify location of your devices config.
+        Return dictionary with monitored devices.
     """
     data_dict = {}
     try:
@@ -79,16 +80,20 @@ def get_statuses(devices_directory):
     except FileNotFoundError:
         logging.error(f"Cannot find passed directory {devices_directory}")
         return
-    for filename in files:
-        if filename.endswith(".json"):
-            with open(devices_directory + '/' + filename) as json_file:
-                try:
-                    data_dict[Path(filename).stem] = json.load(json_file)
-                except json.decoder.JSONDecodeError:
-                    logging.error(f"Cannot parse {filename}. Check your syntax.")
-                except:
-                    logging.error(f"An error occurred while parsing {filename}")
-        else:
-            logging.error(f"Unsupported file extension for {filename}. Ensure to create .json file for the device.")
-    logging.info(data_dict)
-    return data_dict
+    if len(files) == 0:
+        logging.error(f"Directory {devices_directory} is empty. Specify some nice devices!")
+        return
+    else:
+        for filename in files:
+            if filename.endswith(".json"):
+                with open(devices_directory + '/' + filename) as json_file:
+                    try:
+                        data_dict[Path(filename).stem] = json.load(json_file)
+                    except json.decoder.JSONDecodeError:
+                        logging.error(f"Cannot parse {filename}. Check your syntax.")
+                    except:
+                        logging.error(f"An error occurred while parsing {filename}")
+            else:
+                logging.error(f"Unsupported file extension for {filename}. Ensure to create .json file for the device.")
+        logging.info(data_dict)
+        return data_dict
