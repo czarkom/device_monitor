@@ -1,0 +1,7 @@
+README.md
+maciej_device_monitor.py
+setup.py
+maciejdevicemonitor.egg-info/PKG-INFO
+maciejdevicemonitor.egg-info/SOURCES.txt
+maciejdevicemonitor.egg-info/dependency_links.txt
+maciejdevicemonitor.egg-info/top_level.txt
