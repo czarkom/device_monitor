@@ -11,7 +11,7 @@ import threading
 import maciej_device_monitor as td
 
 # At first, let's try to get all of the statuses using get_statuses method
-td.get_statuses('devices')
+print(td.get_statuses('devices'))
 
 # Here I pass my directory with devices name and frequency of logging info about devices
 td.start('devices', 1)
